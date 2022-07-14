@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailRestaurantActivity">
+
+    <TextView
+        android:text="Quản lí nhà hàng"
+        android:textColor="#FF6D00"
+        android:textAllCaps="true"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="8dp"
+        android:fontFamily="@font/hobostd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/imvRestaurantDetail"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/pizza" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvNameRestaurantDetail"
+            android:textColor="@color/black"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:text="Nha hang ngoc thanh"
+            android:fontFamily="@font/hobostd"
+            android:textSize="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvAddressRestaurantDetail"
+            android:text="Dc: Binh Duong - Viet Nam"
+            android:textColor="@color/black"
+            android:paddingBottom="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvDescribeRestaurantDetail"
+            android:text="Nha hang an uong"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:paddingBottom="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_QLDH"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="4dp"
+        android:padding="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/ic_bell24"
+            android:layout_width="24dp"
+            android:layout_height="24dp"/>
+        <TextView
+            android:text="Quan li don hang"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:fontFamily="@font/seg"
+            android:paddingStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_QLMA"
+        android:padding="4dp"
+        android:layout_marginHorizontal="4dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/ic_pieces24"
+            android:layout_width="24dp"
+            android:layout_height="24dp"/>
+        <TextView
+            android:text="Quan li mon an"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:paddingStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_LSDH"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        android:layout_marginHorizontal="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/ic_history24"
+            android:layout_width="24dp"
+            android:layout_height="24dp"/>
+        <TextView
+            android:text="Lich su don hang"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:paddingStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_ThongKe"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        android:layout_marginHorizontal="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/ic_revenue24"
+            android:layout_width="24dp"
+            android:layout_height="24dp"/>
+        <TextView
+            android:text="Thong ke"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:paddingStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_QLTK"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        android:layout_marginHorizontal="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/ic_settings_24"
+            android:layout_width="24dp"
+            android:layout_height="24dp"/>
+        <TextView
+            android:text="Settings"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:paddingStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"/>
+    </LinearLayout>
+
+</LinearLayout>
