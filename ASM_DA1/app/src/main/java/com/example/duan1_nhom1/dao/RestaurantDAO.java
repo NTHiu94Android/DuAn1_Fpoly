@@ -59,6 +59,24 @@ public class RestaurantDAO {
         }
         return list;
     }
+
+    //Lay maNH theo maMA
+    public String getMaNHTheoMaMA(String maMA){
+        ArrayList<String> list = new ArrayList<>();
+        db = dbHelper.getReadableDatabase();
+        String sql = "SELECT RESTAURANT.MA_NH FROM RESTAURANT INNER JOIN FOOD ON RESTAURANT.MA_NH = FOOD.MA_NH WHERE FOOD.MA_MA =?";
+        Cursor cursor = db.rawQuery(sql, new String[]{maMA});
+        if(cursor.getCount() != 0){
+            cursor.moveToFirst();
+            do {
+                String maNH = cursor.getString(0);
+                list.add(maNH);
+            }while (cursor.moveToNext());
+            cursor.close();
+            db.close();
+        }
+        return list.get(0);
+    }
     //Them nha hang
     public void insert(Restaurant restaurant){
         db = dbHelper.getWritableDatabase();

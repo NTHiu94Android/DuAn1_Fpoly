@@ -6,12 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#F4F2F2"
-    tools:context=".CustomerListCategoriesActivity">
-
+    android:background="@color/background"
+    tools:context=".RestaurantOrderManagerActivity">
     <TextView
-        android:id="@+id/tvListCategories"
-        android:text="Danh sach san pham"
+        android:text="Danh sach don hang"
         android:textStyle="bold"
         android:textColor="#FF6D00"
         android:textSize="24sp"
@@ -21,7 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvListCategories"
+        android:id="@+id/rcvListOrderRes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
 </LinearLayout>

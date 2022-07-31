@@ -18,10 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.chauthai.swipereveallayout.SwipeRevealLayout;
 import com.chauthai.swipereveallayout.ViewBinderHelper;
-import com.example.duan1_nhom1.DetailFoodRestaurantActivity;
-import com.example.duan1_nhom1.FoodManagerActivity;
+import com.example.duan1_nhom1.RestaurantDetailFoodActivity;
+import com.example.duan1_nhom1.RestaurantFoodManagerActivity;
 import com.example.duan1_nhom1.R;
-import com.example.duan1_nhom1.UpdateFoodActivity;
+import com.example.duan1_nhom1.RestaurantUpdateFoodActivity;
 import com.example.duan1_nhom1.dao.FoodDAO;
 import com.example.duan1_nhom1.modul.Food;
 import com.google.firebase.database.DatabaseError;
@@ -67,7 +67,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         holder.layout_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, DetailFoodRestaurantActivity.class);
+                Intent intent = new Intent(context, RestaurantDetailFoodActivity.class);
                 intent.putExtra("food", food);
                 context.startActivity(intent);
             }
@@ -76,8 +76,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         holder.tvEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((FoodManagerActivity)context).finish();
-                Intent i = new Intent(context, UpdateFoodActivity.class);
+                ((RestaurantFoodManagerActivity)context).finish();
+                Intent i = new Intent(context, RestaurantUpdateFoodActivity.class);
                 i.putExtra("food", food);
                 context.startActivity(i);
                 viewBinderHelper.closeLayout(String.valueOf(food.getMaMA()));

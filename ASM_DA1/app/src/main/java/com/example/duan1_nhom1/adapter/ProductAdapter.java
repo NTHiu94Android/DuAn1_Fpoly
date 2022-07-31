@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.duan1_nhom1.DetailFoodActivity;
+import com.example.duan1_nhom1.CustomerDetailFoodActivity;
 import com.example.duan1_nhom1.R;
 import com.example.duan1_nhom1.modul.Food;
 
@@ -22,9 +22,11 @@ import java.util.ArrayList;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder>{
     private ArrayList<Food> list;
     private Context context;
-    public void getData(ArrayList<Food> list, Context context){
+    private String maKH;
+    public void getData(ArrayList<Food> list, Context context, String maKH){
         this.list = list;
         this.context = context;
+        this.maKH = maKH;
         notifyDataSetChanged();
     }
     @NonNull
@@ -46,8 +48,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, DetailFoodActivity.class);
+                Intent intent = new Intent(context, CustomerDetailFoodActivity.class);
                 intent.putExtra("food", food);
+                intent.putExtra("maKH", maKH);
                 context.startActivity(intent);
             }
         });

@@ -12,17 +12,23 @@
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/drawable/ic_home_24.xml" value="0.21614583333333334" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_add_food.xml" value="0.1766304347826087" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_add_restaurant.xml" value="0.2" />
+        <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_cart.xml" value="0.15443840579710144" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_change_password.xml" value="0.22" />
+        <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_customer.xml" value="0.16576086956521738" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_detail.xml" value="0.15670289855072464" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_detail_food.xml" value="0.2" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_detail_food_restaurant.xml" value="0.1766304347826087" />
+        <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_detail_order.xml" value="0.161231884057971" />
+        <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_detail_res_customer.xml" value="0.14356884057971014" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_detail_restaurant.xml" value="0.2" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_food_manager.xml" value="0.18115942028985507" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_history_order.xml" value="0.16530797101449277" />
+        <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_history_order_res.xml" value="0.16576086956521738" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_infor_restaurant_owner.xml" value="0.22" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_list_categories.xml" value="0.2" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_main.xml" value="0.15670289855072464" />
+        <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_res_order_manager.xml" value="0.16576086956521738" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_restaurant.xml" value="0.16530797101449277" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_restaurant_owners.xml" value="0.22" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/activity_signup.xml" value="0.21" />
@@ -36,9 +42,12 @@
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/fragment_profile.xml" value="0.15670289855072464" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/fragment_settings.xml" value="0.15670289855072464" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/fragment_support.xml" value="0.15670289855072464" />
+        <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/item_cart.xml" value="0.15443840579710144" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/item_categories.xml" value="0.18" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/item_food.xml" value="0.17" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/item_food_categories.xml" value="0.2" />
+        <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/item_order_detail.xml" value="0.15579710144927536" />
+        <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/item_order_detail_res.xml" value="0.16576086956521738" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/item_popular.xml" value="0.25" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/item_product.xml" value="0.16259057971014493" />
         <entry key="..\:/FPOLY/DUAN1/ASM_DA1/app/src/main/res/layout/item_restaurant.xml" value="0.16032608695652173" />

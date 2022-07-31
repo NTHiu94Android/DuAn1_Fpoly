@@ -21,14 +21,10 @@ import com.example.duan1_nhom1.dao.RestaurantTypeDAO;
 import com.example.duan1_nhom1.modul.Restaurant;
 import com.example.duan1_nhom1.modul.RestaurantType;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 public class RestaurantOwnersActivity extends AppCompatActivity {
@@ -61,7 +57,7 @@ public class RestaurantOwnersActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Restaurant restaurant = list.get(i);
-                Intent intent1 = new Intent(RestaurantOwnersActivity.this, DetailRestaurantActivity.class);
+                Intent intent1 = new Intent(RestaurantOwnersActivity.this, RestaurantDetailResActivity.class);
                 intent1.putExtra("restaurant", restaurant);
                 Toast.makeText(getApplicationContext(), ""+restaurant.getMaNH(), Toast.LENGTH_SHORT).show();
                 startActivity(intent1);

@@ -1,27 +1,32 @@
 package com.example.duan1_nhom1.modul;
 
 public class Order {
-    private int maHD;
+    private String maHD;
     private String ngayMua;
     private double tongTien;
     private String trangThai;
-    private int maNH;
+    private String maMA;
+    private String maNH;
     private String maKH;
 
-    public Order(int maHD, String ngayMua, double tongTien, String trangThai, int maNH, String maKH) {
+    public Order() {
+    }
+
+    public Order(String maHD, String ngayMua, double tongTien, String trangThai, String maMA, String maNH, String maKH) {
         this.maHD = maHD;
         this.ngayMua = ngayMua;
         this.tongTien = tongTien;
         this.trangThai = trangThai;
+        this.maMA = maMA;
         this.maNH = maNH;
         this.maKH = maKH;
     }
 
-    public int getMaHD() {
+    public String getMaHD() {
         return maHD;
     }
 
-    public void setMaHD(int maHD) {
+    public void setMaHD(String maHD) {
         this.maHD = maHD;
     }
 
@@ -49,11 +54,19 @@ public class Order {
         this.trangThai = trangThai;
     }
 
-    public int getMaNH() {
+    public String getMaMA() {
+        return maMA;
+    }
+
+    public void setMaMA(String maMA) {
+        this.maMA = maMA;
+    }
+
+    public String getMaNH() {
         return maNH;
     }
 
-    public void setMaNH(int maNH) {
+    public void setMaNH(String maNH) {
         this.maNH = maNH;
     }
 

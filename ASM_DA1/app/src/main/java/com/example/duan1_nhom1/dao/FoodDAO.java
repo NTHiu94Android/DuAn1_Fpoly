@@ -39,7 +39,7 @@ public class FoodDAO {
         }
         return list;
     }
-    //Lay mon an tho ma nha hang
+    //Lay mon an theo ma nha hang
     public ArrayList<Food> getFoodTheoMaNH(String maNH){
         ArrayList<Food> list = new ArrayList<>();
         db = dbHelper.getReadableDatabase();
@@ -80,6 +80,27 @@ public class FoodDAO {
             db.close();
         }
         return list;
+    }
+    //Lay mon an theo ma mon an
+    public Food getFoodTheoMaMA(String maMA){
+        ArrayList<Food> list = new ArrayList<>();
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM FOOD WHERE MA_MA=?", new String[]{maMA});
+        if(cursor.getCount() != 0){
+            cursor.moveToFirst();
+            do {
+                String tenMA = cursor.getString(1);
+                String moTa = cursor.getString(2);
+                String hinhAnhMA = cursor.getString(3);
+                double gia = cursor.getDouble(4);
+                String maNH = cursor.getString(5);
+                int maLoaiMA = cursor.getInt(6);
+                list.add(new Food(maMA, tenMA, moTa, hinhAnhMA, gia, maNH, maLoaiMA));
+            }while (cursor.moveToNext());
+            cursor.close();
+            db.close();
+        }
+        return list.get(0);
     }
     //Them mon an
     public void insert(Food food){

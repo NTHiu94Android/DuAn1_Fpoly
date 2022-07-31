@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +17,7 @@ import com.example.duan1_nhom1.R;
 import com.example.duan1_nhom1.adapter.CategoriesAdapter;
 import com.example.duan1_nhom1.adapter.PopularAdapter;
 import com.example.duan1_nhom1.adapter.ProductAdapter;
+import com.example.duan1_nhom1.dao.CustomerDAO;
 import com.example.duan1_nhom1.dao.FoodDAO;
 import com.example.duan1_nhom1.dao.FoodTypeDAO;
 import com.example.duan1_nhom1.dao.RestaurantDAO;
@@ -27,6 +30,7 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
     private TextView tvAccount;
+    private Button btnOrderNow;
     private RecyclerView rcvCategories, rcvPopular, rcvProduct;
     private CategoriesAdapter categoriesAdapter;
     private PopularAdapter popularAdapter;
@@ -46,16 +50,28 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        btnOrderNow = view.findViewById(R.id.btnBannerHome);
         tvAccount = view.findViewById(R.id.tvAccount);
         rcvCategories = view.findViewById(R.id.rcvCategories);
         rcvPopular = view.findViewById(R.id.rcvPopular);
         rcvProduct = view.findViewById(R.id.rcvProduct);
         //Lay username tu LoginActivity hien thi len textview
         Intent intent = getActivity().getIntent();
-        Customer customer = (Customer) intent.getSerializableExtra("object");
-        username = customer.getTenKH();
+        username = intent.getStringExtra("username");
+        if(intent.getStringExtra("username") == null){
+            username = intent.getStringExtra("maKH");
+        }
         //Set ma tai khoan len textview
-        tvAccount.setText(username);
+        CustomerDAO customerDAO = new CustomerDAO(getActivity());
+        Customer customer = customerDAO.getCustomer(username);
+        tvAccount.setText(customer.getTenKH());
+        btnOrderNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                //fragmentManager.beginTransaction().replace(R.id.viewPager, CartFargment.newInstance()).commit();
+            }
+        });
         //Set data len recycleview
         setRcvCategories();
         setRcvPopular();
@@ -68,7 +84,7 @@ public class HomeFragment extends Fragment {
         foodTypeDAO = new FoodTypeDAO(getActivity());
         list_categories = foodTypeDAO.getAllFoodType();
         categoriesAdapter = new CategoriesAdapter();
-        categoriesAdapter.getData(list_categories, getActivity());
+        categoriesAdapter.getData(list_categories, getActivity(), username);
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -81,7 +97,7 @@ public class HomeFragment extends Fragment {
         restaurantDAO = new RestaurantDAO(getActivity());
         list_restaurant = restaurantDAO.getAllRestaurant();
         popularAdapter = new PopularAdapter();
-        popularAdapter.getData(list_restaurant, getActivity());
+        popularAdapter.getData(list_restaurant, getActivity(), username);
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -94,7 +110,7 @@ public class HomeFragment extends Fragment {
         foodDAO = new FoodDAO(getActivity());
         list_product = foodDAO.getAllFood();
         productAdapter = new ProductAdapter();
-        productAdapter.getData(list_product, getActivity());
+        productAdapter.getData(list_product, getActivity(), username);
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -107,9 +123,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        //Lay username tu LoginActivity hien thi len textview
+        //Lay username tu CartActivity hien thi len textview
         Intent intent = getActivity().getIntent();
         Customer customer = (Customer) intent.getSerializableExtra("object");
-        username = customer.getTenKH();
     }
 }

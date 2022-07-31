@@ -1,15 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6D9C3"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".fragment.CartFargment">
-
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/tvCartFM"
+        android:text="MY CART"
+        android:textColor="#FF6D00"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvCart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Cart" />
-
-</FrameLayout>
+        android:layout_marginBottom="10dp"
+        android:layout_above="@id/tvPayFM"
+        android:layout_below="@+id/tvCartFM" />
+    <TextView
+        android:id="@+id/tvPayFM"
+        android:text="Pay"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/background_gradian_button1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+</RelativeLayout>

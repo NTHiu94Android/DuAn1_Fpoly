@@ -5,23 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/background"
     android:padding="16dp"
-    android:background="#F4F2F2"
-    tools:context=".CustomerListCategoriesActivity">
+    tools:context=".CustomerDetailOrderActivity">
 
     <TextView
-        android:id="@+id/tvListCategories"
-        android:text="Danh sach san pham"
-        android:textStyle="bold"
+        android:text="ORDER DETAIL"
         android:textColor="#FF6D00"
         android:textSize="24sp"
-        android:textAllCaps="true"
+        android:textStyle="bold"
         android:gravity="center"
         android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvListCategories"
+        android:id="@+id/rcvOrderDetail"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp" />
+
 </LinearLayout>

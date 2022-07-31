@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".DetailFoodRestaurantActivity">
+    tools:context=".RestaurantDetailFoodActivity">
     <TextView
         android:text="Sản phẩm chi tiết"
         android:textColor="#FF6D00"

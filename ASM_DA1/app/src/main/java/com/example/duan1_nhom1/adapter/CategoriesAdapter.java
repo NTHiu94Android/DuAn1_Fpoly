@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.duan1_nhom1.ListCategoriesActivity;
+import com.example.duan1_nhom1.CustomerListCategoriesActivity;
 import com.example.duan1_nhom1.R;
 import com.example.duan1_nhom1.modul.TypeOfFood;
 
@@ -21,10 +21,12 @@ import java.util.ArrayList;
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder>{
     private ArrayList<TypeOfFood> list;
     private Context context;
+    private String maKH;
 
-    public void getData(ArrayList<TypeOfFood> list, Context context){
+    public void getData(ArrayList<TypeOfFood> list, Context context, String maKH){
         this.list = list;
         this.context = context;
+        this.maKH = maKH;
         notifyDataSetChanged();
     }
     @NonNull
@@ -43,8 +45,9 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
         holder.layoutview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ListCategoriesActivity.class);
+                Intent intent = new Intent(context, CustomerListCategoriesActivity.class);
                 intent.putExtra("FoodType", typeOfFood);
+                intent.putExtra("maKH", maKH);
                 context.startActivity(intent);
             }
         });

@@ -32,10 +32,12 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(sql);
         sql = "DROP TABLE IF EXISTS FOOD";
         sqLiteDatabase.execSQL(sql);
-//        sql = "DROP TABLE IF EXISTS ORDERS";
-//        sqLiteDatabase.execSQL(sql);
-//        sql = "DROP TABLE IF EXISTS ORDER_DETAIL";
-//        sqLiteDatabase.execSQL(sql);
+        sql = "DROP TABLE IF EXISTS ORDERS";
+        sqLiteDatabase.execSQL(sql);
+        sql = "DROP TABLE IF EXISTS ORDER_DETAIL";
+        sqLiteDatabase.execSQL(sql);
+        sql = "DROP TABLE IF EXISTS CART";
+        sqLiteDatabase.execSQL(sql);
 
         onCreate(sqLiteDatabase);
     }
@@ -71,22 +73,29 @@ public class DBHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY (MA_NH) REFERENCES RESRTAURANT(MA_NH)," +
                 "FOREIGN KEY (MALOAI_MA) REFERENCES TYPE_OF_FOOD(MALOAI_MA))";
         sqLiteDatabase.execSQL(sql);
-//
-//        //Tao bang hoa don
-//        sql = "CREATE TABLE ORDERS (MA_HD INTEGER PRIMARY KEY AUTOINCREMENT, NGAYMUA TEXT, TONGTIEN DOUBLE, MA_NH INTEGER, MA_KH INTEGER," +
-//                "FOREIGN KEY (MA_NH) REFERENCES RESRTAURANT(MA_NH)," +
-//                "FOREIGN KEY (MA_KH) REFERENCES TYPE_RESRTAURANT(MA_KH))";
-//
-//        //Tao bang hoa don chi tiet
-//        sql = "CREATE TABLE ORDER_DETAIL (MA_HDCT INTEGER PRIMARY KEY AUTOINCREMENT, SOLUONG INTEGER, DONGIA DOUBLE, MA_MA INTEGER, MA_HD TEXT," +
-//                "FOREIGN KEY (MA_MA) REFERENCES FOOD(MA_MA), " +
-//                "FOREIGN KEY (MA_HD) REFERENCES ORDERS(MA_HD))";
-//        sqLiteDatabase.execSQL(sql);
 
+        //Tao bang hoa don
+        sql = "CREATE TABLE ORDERS (MA_HD TEXT, NGAYMUA TEXT, TONGTIEN DOUBLE, TRANGTHAI TEXT, MA_MA TEXT, MA_NH TEXT, MA_KH TEXT," +
+                "FOREIGN KEY (MA_MA) REFERENCES FOOD(MA_MA)," +
+                "FOREIGN KEY (MA_NH) REFERENCES RESRTAURANT(MA_NH)," +
+                "FOREIGN KEY (MA_KH) REFERENCES TYPE_RESRTAURANT(MA_KH))";
+        sqLiteDatabase.execSQL(sql);
+
+        //Tao bang hoa don chi tiet
+        sql = "CREATE TABLE ORDER_DETAIL (MA_HDCT TEXT, SOLUONG INTEGER, DONGIA DOUBLE, MA_MA TEXT, MA_HD TEXT," +
+                "FOREIGN KEY (MA_MA) REFERENCES FOOD(MA_MA), " +
+                "FOREIGN KEY (MA_HD) REFERENCES ORDERS(MA_HD))";
+        sqLiteDatabase.execSQL(sql);
+
+        //Tao bang gio hang
+        sql = "CREATE TABLE CART (MA_GH TEXT, SOLUONG_CART INTEGER, DONGIA_CART DOUBLE, MA_MA TEXT, MA_KH TEXT," +
+                "FOREIGN KEY (MA_MA) REFERENCES FOOD(MA_MA), " +
+                "FOREIGN KEY (MA_KH) REFERENCES CUSTOMER(MA_KH))";
+        sqLiteDatabase.execSQL(sql);
     }
+
     //Them du lieu
     private void themDuLieu(SQLiteDatabase sqLiteDatabase) {
-
         sql = "INSERT INTO TYPE_RESRTAURANT(TENLOAI_NH) VALUES('Fast food'), ('Family'), ('Casual'), ('Premium')";
         sqLiteDatabase.execSQL(sql);
         sql = "INSERT INTO TYPE_OF_FOOD(TEN_LMA, HINHANH_LMA) " +
@@ -98,14 +107,5 @@ public class DBHelper extends SQLiteOpenHelper {
                 "('Hotdog',"+R.drawable.cat_3+"),"+
                 "('Cake', "+R.drawable.cat_1+")";
         sqLiteDatabase.execSQL(sql);
-//        sql = "INSERT INTO CUSTOMER VALUES('0123456789', 'Khach hang 1', 'Binh Duong', 'Customer', '0123456789')";
-//        sqLiteDatabase.execSQL(sql);
-//        sql = "INSERT INTO RESTAURANT_OWNERS VALUES('admin', 'admin', 'Restaurant Owners', 'admin')";
-//        sqLiteDatabase.execSQL(sql);
-//        sql = "INSERT INTO RESTAURANT " +
-//                "VALUES('000','NH NGOC THANH', 'Dc: Di An - Binh Duong', 'Chuyen cung cap cac mon an', "+ R.drawable.ic_restaurant256 +", 'admin', 1)," +
-//                "('111','NH NGOC BICH', 'Dc: Di An - Binh Duong', 'Chuyen cung cap nuoc uong', "+ R.drawable.ic_restaurant2_256 +", 'admin', 2)";
-//        sqLiteDatabase.execSQL(sql);
-
     }
 }

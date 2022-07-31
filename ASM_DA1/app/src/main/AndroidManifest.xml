@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".fcm.PushNotification"
         android:allowBackup="true"
         android:icon="@mipmap/ic_logo"
         android:label="@string/app_name"
@@ -13,25 +14,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DuAn1_Nhom1">
         <activity
-            android:name=".ListCategoriesActivity"
+            android:name=".RestaurantOrderManagerActivity"
             android:exported="false" />
         <activity
-            android:name=".UpdateFoodActivity"
+            android:name=".CustomerDetailOrderActivity"
             android:exported="false" />
         <activity
-            android:name=".AddFoodActivity"
+            android:name=".CustomerDetailResActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailFoodRestaurantActivity"
+            android:name=".CustomerListCategoriesActivity"
             android:exported="false" />
         <activity
-            android:name=".FoodManagerActivity"
+            android:name=".RestaurantUpdateFoodActivity"
             android:exported="false" />
         <activity
-            android:name=".InforRestaurantOwnerActivity"
+            android:name=".RestaurantAddFoodActivity"
             android:exported="false" />
         <activity
-            android:name=".HistoryOrderActivity"
+            android:name=".RestaurantDetailFoodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RestaurantFoodManagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RestaurantOwnerInforActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RestaurantHistoryOrderActivity"
             android:exported="false" />
         <activity
             android:name=".ChangePasswordActivity"
@@ -46,10 +56,10 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailRestaurantActivity"
+            android:name=".RestaurantDetailResActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailFoodActivity"
+            android:name=".CustomerDetailFoodActivity"
             android:exported="false" />
         <activity
             android:name=".CustomerActivity"
@@ -63,6 +73,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service
+            android:name=".fcm.PushNotificationService"
+            android:exported="false">
+            <intent-filter>
+                <action
+                    android:name="com.google.firebase.MESSAGING_EVENT">
+                </action>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

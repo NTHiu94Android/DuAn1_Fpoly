@@ -11,12 +11,16 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.duan1_nhom1.dao.CartDAO;
 import com.example.duan1_nhom1.dao.CustomerDAO;
 import com.example.duan1_nhom1.dao.FoodDAO;
+import com.example.duan1_nhom1.dao.OrderDAO;
 import com.example.duan1_nhom1.dao.RestaurantDAO;
 import com.example.duan1_nhom1.dao.RestaurantOwnerDAO;
+import com.example.duan1_nhom1.modul.Cart;
 import com.example.duan1_nhom1.modul.Customer;
 import com.example.duan1_nhom1.modul.Food;
+import com.example.duan1_nhom1.modul.Order;
 import com.example.duan1_nhom1.modul.Restaurant;
 import com.example.duan1_nhom1.modul.RestaurantOwners;
 import com.google.firebase.database.DataSnapshot;
@@ -28,12 +32,12 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginActivity extends AppCompatActivity {
     private EditText edtUser, edtPass;
     private CheckBox chkRemember;
-    private Intent intent;
     private CustomerDAO customerDAO;
     private RestaurantOwnerDAO restaurantOwnerDAO;
     private RestaurantDAO restaurantDAO;
     private FoodDAO foodDAO;
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private CartDAO cartDAO;
+    private OrderDAO orderDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +54,15 @@ public class LoginActivity extends AppCompatActivity {
         restaurantOwnerDAO = new RestaurantOwnerDAO(getApplicationContext());
         restaurantDAO = new RestaurantDAO(getApplicationContext());
         foodDAO = new FoodDAO(getApplicationContext());
+        cartDAO = new CartDAO(getApplicationContext());
+        orderDAO = new OrderDAO(getApplicationContext());
         //Lay du lieu tu firebase ve sqlite
         getCustomerFromFirebase();
         getRestaurantOwnweFromFirebase();
         getRestaurantFromFirebase();
         getFoodFromFirebase();
+        getCartFromFirebase();
+        getOrderFromFirebase();
         //Luu thong tin dang nhap
         restoringPreferences();
         //Bat su kien
@@ -87,6 +95,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     //Ham luu thong tin dang nhap
     private void savePreferences() {
+        Intent intent;
         String user = edtUser.getText().toString();
         String pass = edtPass.getText().toString();
         boolean chk = chkRemember.isChecked();
@@ -111,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                 intent = new Intent(getApplicationContext(), CustomerActivity.class);
                 Customer customer = customerDAO.getCustomer(user);
                 intent.putExtra("object", customer);
-                intent.putExtra("username", user);
+                intent.putExtra("maKH", user);
                 startActivity(intent);
             }else if(checkuserpassRestaurantOwners){//Neu tai khoan trong bang chu nha hang
                 if(chk){
@@ -141,6 +150,7 @@ public class LoginActivity extends AppCompatActivity {
             customerDAO.getAllCustomer().clear();
             customerDAO.deleteAll();
         }
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("list_customer");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -166,6 +176,7 @@ public class LoginActivity extends AppCompatActivity {
             restaurantOwnerDAO.getAllRestaurantOwner().clear();
             restaurantOwnerDAO.deleteAll();
         }
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("list_restaurant_owner");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -191,6 +202,7 @@ public class LoginActivity extends AppCompatActivity {
             restaurantDAO.getAllRestaurant().clear();
             restaurantDAO.deleteAllRestaurant();
         }
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("list_restaurant");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -215,6 +227,7 @@ public class LoginActivity extends AppCompatActivity {
             foodDAO.getAllFood().clear();
             foodDAO.deleteAll();
         }
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("list_food");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -234,6 +247,57 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+    private void getCartFromFirebase(){
+        if(cartDAO.getAllCart().size()>0){
+            cartDAO.getAllCart().clear();
+            cartDAO.deleteAll();
+        }
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("list_cart");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(cartDAO.getAllCart().size() == 0){
+                    for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                        // TODO: handle the post
+                        Cart cart = postSnapshot.getValue(Cart.class);
+                        cartDAO.insert(cart);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Toast.makeText(LoginActivity.this, "Load list_cart fail", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void getOrderFromFirebase(){
+        if(orderDAO.getAllOrder().size()>0){
+            orderDAO.getAllOrder().clear();
+            orderDAO.deleteAll();
+        }
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("list_order");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(orderDAO.getAllOrder().size() == 0){
+                    for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                        // TODO: handle the post
+                        Order order = postSnapshot.getValue(Order.class);
+                        orderDAO.insert(order);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Toast.makeText(LoginActivity.this, "Load list_order fail", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     @Override
     protected void onResume() {
@@ -243,15 +307,6 @@ public class LoginActivity extends AppCompatActivity {
         getRestaurantOwnweFromFirebase();
         getRestaurantFromFirebase();
         getFoodFromFirebase();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        //Lay du lieu tu firebase ve sqlite
-        getCustomerFromFirebase();
-        getRestaurantOwnweFromFirebase();
-        getRestaurantFromFirebase();
-        getFoodFromFirebase();
+        getOrderFromFirebase();
     }
 }

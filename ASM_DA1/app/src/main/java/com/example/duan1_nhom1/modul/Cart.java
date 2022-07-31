@@ -1,29 +1,31 @@
 package com.example.duan1_nhom1.modul;
 
-public class OrderDetail {
-    private String maDHCT;
+import java.io.Serializable;
+
+public class Cart implements Serializable {
+    private String maGH;
     private int soLuong;
     private double donGia;
     private String maMA;
-    private String maHD;
+    private String maKH;
 
-    public OrderDetail() {
+    public Cart() {
     }
 
-    public OrderDetail(String maDHCT, int soLuong, double donGia, String maMA, String maHD) {
-        this.maDHCT = maDHCT;
+    public Cart(String maGH, int soLuong, double donGia, String maMA, String maKH) {
+        this.maGH = maGH;
         this.soLuong = soLuong;
         this.donGia = donGia;
         this.maMA = maMA;
-        this.maHD = maHD;
+        this.maKH = maKH;
     }
 
-    public String getMaDHCT() {
-        return maDHCT;
+    public String getMaGH() {
+        return maGH;
     }
 
-    public void setMaDHCT(String maDHCT) {
-        this.maDHCT = maDHCT;
+    public void setMaGH(String maGH) {
+        this.maGH = maGH;
     }
 
     public int getSoLuong() {
@@ -50,11 +52,11 @@ public class OrderDetail {
         this.maMA = maMA;
     }
 
-    public String getMaHD() {
-        return maHD;
+    public String getMaKH() {
+        return maKH;
     }
 
-    public void setMaHD(String maHD) {
-        this.maHD = maHD;
+    public void setMaKH(String maKH) {
+        this.maKH = maKH;
     }
 }
